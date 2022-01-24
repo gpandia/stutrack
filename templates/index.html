@@ -1,0 +1,68 @@
+{%extends 'base.html' %}
+
+{%block head%}
+
+
+{% endblock %}
+
+{%block body%}
+<title>Study Tracker</title>
+
+<div class='content'>
+  
+  <h1>Study Tracker 📝</h1>
+    {% if tasks|length < 1 %}
+    <h4 style="text-align: center">😃 There are no tasks. Create one below!</h4>
+    {% else %}
+  <table>
+    <tr>
+        <th>Book ✍️</th>
+        <th>Added 📅</th>
+        <th>Chapter </th>
+        <th>Actions ✏️</th>
+
+    </tr>
+    <tr>
+      <a href="/deleteall/all">Delete all</a>
+    </tr>
+    {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created.date()}}</td>
+                <td>{{ task.doer}}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}        
+        </table>
+        {% endif %}
+        <div class="form">
+        <form action="/" method="POST">
+            <input type="text" name="book" id="book" placeholder="Book">  
+            <input type="text" name="chapter" id="chapter" placeholder="Chapter">
+            <input type="submit" value="Add Task 📌">
+        </form>
+    </div>
+
+
+
+
+
+<dt style="text-align:center;" class="TitleDivider">
+  <em style="color: #4285F4"> · </em>
+  <em style="color: #DB4437"> · </em>
+  <em style="color: #F4B400"> · </em>
+  <em style="color: #4285F4"> · </em>
+  <em style="color: #0F9D58"> · </em>
+  <em style="color: #DB4437"> · </em>
+</dt>
+  <h5>Inspired from Yaokun Lin and worked on by Gokul Pandian C <img src="{{url_for('static',filename='images/thinkingman.png')}}" alt="Emoji" width="50" height="40">
+   using:</h5>
+   <h5> Python Flask + SQLAlchemy</h5>
+   <h5> Hosted on: Heroku</h5>
+
+</div>
+{% endblock %}
