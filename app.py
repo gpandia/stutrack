@@ -48,8 +48,8 @@ def update(id):
     task = Todo.query.get_or_404(id)
 
     if request.method == 'POST':
-        task.BOOK = request.form['book']
-        task.CHAPTER = request.form['chapter']
+        task.content = request.form['book']
+        task.doer = request.form['chapter']
 
         try:
             db.session.commit()
