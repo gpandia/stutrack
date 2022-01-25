@@ -18,8 +18,8 @@ class Todo(db.Model):
 @app.route('/',methods=['POST','GET'])
 def index():
     if request.method =='POST':
-        task_content=request.form['book']  
-        task_doer=request.form['chapter']
+        task_content=request.form['content']  
+        task_doer=request.form['doer']
 
         new_task=Todo(content=task_content,doer=task_doer)
         try:
@@ -48,8 +48,8 @@ def update(id):
     task = Todo.query.get_or_404(id)
 
     if request.method == 'POST':
-        task.content = request.form['book']
-        task.doer = request.form['chapter']
+        task.content = request.form['content']
+        task.doer = request.form['doer']
 
         try:
             db.session.commit()

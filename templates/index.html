@@ -6,19 +6,19 @@
 {% endblock %}
 
 {%block body%}
-<title>Study Tracker</title>
+<title>To-Do Tracker</title>
 
 <div class='content'>
   
-  <h1>Study Tracker 📝</h1>
+  <h1>To-Do List Tracker 📝</h1>
     {% if tasks|length < 1 %}
     <h4 style="text-align: center">😃 There are no tasks. Create one below!</h4>
     {% else %}
   <table>
     <tr>
-        <th>Book ✍️</th>
+        <th>Task ✍️</th>
         <th>Added 📅</th>
-        <th>Chapter </th>
+        <th>Work by </th>
         <th>Actions ✏️</th>
 
     </tr>
@@ -41,8 +41,8 @@
         {% endif %}
         <div class="form">
         <form action="/" method="POST">
-            <input type="text" name="book" id="book" placeholder="Book">  
-            <input type="text" name="chapter" id="chapter" placeholder="Chapter">
+            <input type="text" name="content" id="content" placeholder="Enter Task here">  
+            <input type="text" name="doer" id="doer" placeholder="By">
             <input type="submit" value="Add Task 📌">
         </form>
     </div>
